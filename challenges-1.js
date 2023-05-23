@@ -59,7 +59,10 @@ const countPassengersInClass = (data, pclass) => {
 // Return the count of survivors in that pclass.
 
 const getSurvivorCountForClass = (data, pclass) => {
-  return 0;
+  return data.filter(
+    (passenger) =>
+      passenger.fields.survived === "Yes" && passenger.fields.pclass === pclass
+  ).length;
 };
 
 // 6 ---------------------------------------------------------------
