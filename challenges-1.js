@@ -82,7 +82,10 @@ const getCasualityCountForClass = (data, pclass) => {
 // passenger data where the age is missing.
 
 const getMinAge = (data) => {
-  return 0;
+  const ages = data
+    .map((passenger) => passenger.fields.age)
+    .filter((age) => age !== undefined);
+  return ages.length > 0 ? Math.min(...ages) : null;
 };
 
 // 8 ---------------------------------------------------------------
@@ -90,7 +93,10 @@ const getMinAge = (data) => {
 // age is missing.
 
 const getMaxAge = (data) => {
-  return 0;
+  const ages = data
+    .map((passenger) => passenger.fields.age)
+    .filter((age) => age !== undefined);
+  return ages.length > 0 ? Math.max(...ages) : null;
 };
 
 // 9 ---------------------------------------------------------------
@@ -100,7 +106,8 @@ const getMaxAge = (data) => {
 // embarkation code. Return the count of passenegers with that code.
 
 const getEmbarkedCount = (data, embarked) => {
-  return 0;
+  return data.filter((passenger) => passenger.fields.embarked === embarked)
+    .length;
 };
 
 // 10 ---------------------------------------------------------------
@@ -108,7 +115,10 @@ const getEmbarkedCount = (data, embarked) => {
 // for some passengers you'll need to filter this out!
 
 const getMinFare = (data) => {
-  return -1;
+  const fares = data
+    .map((passenger) => passenger.fields.fare)
+    .filter((fare) => fare !== undefined);
+  return fares.length > 0 ? Math.min(...fares) : null;
 };
 
 // 11 ---------------------------------------------------------------
@@ -116,7 +126,10 @@ const getMinFare = (data) => {
 // passengers are missing data for fare. Be sure to filter these!
 
 const getMaxFare = (data) => {
-  return 0;
+  const fares = data
+    .map((passenger) => passenger.fields.fare)
+    .filter((fare) => fare !== undefined);
+  return fares.length > 0 ? Math.max(...fares) : null;
 };
 
 // 12 ---------------------------------------------------------------
@@ -124,7 +137,7 @@ const getMaxFare = (data) => {
 // "sex" property that is either "male" or "female"
 
 const getPassengersByGender = (data, gender) => {
-  return 0;
+  return data.filter((passenger) => passenger.fields.sex === gender).length;
 };
 
 // 13 ---------------------------------------------------------------
@@ -133,14 +146,20 @@ const getPassengersByGender = (data, gender) => {
 // to the "sex" property and check the "survived" property.
 
 const getSurvivorsByGender = (data, gender) => {
-  return 0;
+  return data.filter(
+    (passenger) =>
+      passenger.fields.sex === gender && passenger.fields.survived === "Yes"
+  ).length;
 };
 
 // 14 ---------------------------------------------------------------
 // Return the number of passengers who did not survived by gender.
 
 const getCasualitiesByGender = (data, gender) => {
-  return 0;
+  return data.filter(
+    (passenger) =>
+      passenger.fields.sex === gender && passenger.fields.survived === "No"
+  ).length;
 };
 
 // 15 --------------------------------------------------------------
