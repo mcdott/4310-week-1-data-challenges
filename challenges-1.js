@@ -168,7 +168,10 @@ const getCasualitiesByGender = (data, gender) => {
 // where the fare is missing!
 
 const getTotalFare = (data) => {
-  return 0;
+  const fares = data
+    .map((passenger) => passenger.fields.fare)
+    .filter((fare) => fare !== undefined);
+  return fares.reduce((acc, fare) => acc + fare, 0);
 };
 
 // 16 --------------------------------------------------------------
@@ -177,7 +180,10 @@ const getTotalFare = (data) => {
 // missing a fare!
 
 const getAverageFare = (data) => {
-  return 0;
+  const fares = data
+    .map((passenger) => passenger.fields.fare)
+    .filter((fare) => fare !== undefined);
+  return fares.length > 0 ? getTotalFare(data) / fares.length : null;
 };
 
 // 17 --------------------------------------------------------------
@@ -188,8 +194,20 @@ const getAverageFare = (data) => {
 // is even average the two middle values. For example: [2,4,5,16]
 // 4 + 5 = 9 / 2 median is 4.5!
 
+const getMedian = (arr) => {
+  if (!arr.length) return null;
+  const sortedArr = arr.sort((a, b) => a - b);
+  const mid = Math.floor(arr.length / 2);
+  return arr.length % 2 !== 0
+    ? sortedArr[mid]
+    : (sortedArr[mid - 1] + sortedArr[mid]) / 2;
+};
+
 const getMedianFare = (data) => {
-  return 0;
+  const fares = data
+    .map((passenger) => passenger.fields.fare)
+    .filter((fare) => fare !== undefined);
+  return getMedian(fares);
 };
 
 // 18 --------------------------------------------------------------
@@ -198,14 +216,22 @@ const getMedianFare = (data) => {
 // available.
 
 const getAverageAge = (data) => {
-  return 0;
+  const ages = data
+    .map((passenger) => passenger.fields.age)
+    .filter((age) => age !== undefined);
+  return ages.length > 0
+    ? ages.reduce((total, age) => total + age, 0) / ages.length
+    : null;
 };
 
 // 19 --------------------------------------------------------------
 // Return the median age from passengers.
 
 const getMedianAge = (data) => {
-  return 0;
+  const ages = data
+    .map((passenger) => passenger.fields.age)
+    .filter((age) => age !== undefined);
+  return getMedian(ages);
 };
 
 // 20 --------------------------------------------------------------
@@ -213,7 +239,13 @@ const getMedianAge = (data) => {
 // the total number.
 
 const getAverageAgeByGender = (data, gender) => {
-  return 0;
+  const ages = data
+    .filter((passenger) => passenger.fields.sex === gender)
+    .map((passenger) => passenger.fields.age)
+    .filter((age) => age !== undefined);
+  return ages.length > 0
+    ? ages.reduce((total, age) => total + age, 0) / ages.length
+    : null;
 };
 
 // --------------------------------------------------------------
