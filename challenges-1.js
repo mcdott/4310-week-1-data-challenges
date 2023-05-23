@@ -71,7 +71,10 @@ const getSurvivorCountForClass = (data, pclass) => {
 // the number of passengers who did not survive for that class.
 
 const getCasualityCountForClass = (data, pclass) => {
-  return 0;
+  return data.filter(
+    (passenger) =>
+      passenger.fields.survived === "No" && passenger.fields.pclass === pclass
+  ).length;
 };
 
 // 7 ---------------------------------------------------------------
