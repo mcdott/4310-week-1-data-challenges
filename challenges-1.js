@@ -40,7 +40,7 @@ const getSurvivorCount = (data) => {
 // Return a number.
 
 const getCasualityCount = (data) => {
-  return 0;
+  return data.filter((passenger) => passenger.fields.survived === "No").length;
 };
 
 // 4 ---------------------------------------------------------------
