@@ -43,7 +43,7 @@ const filterByProperty = (data, property, value) => {
 // given property have been removed
 
 const filterNullForProperty = (data, property) => {
-  return [];
+  return data.filter((p) => p.fields[property] !== undefined);
 };
 
 // 4 -------------------------------------------------------------

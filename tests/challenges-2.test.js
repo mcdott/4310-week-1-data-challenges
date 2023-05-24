@@ -55,7 +55,7 @@ describe("Challenge 2 Titanic", () => {
     expect(index.filterByProperty(data, "sex", "female")).toEqual(allFemale);
   });
 
-  test.skip("Test filterNullForProperty", () => {
+  test("Test filterNullForProperty", () => {
     const faresNotNull = data.filter((p) => p.fields.fare !== undefined);
     const agesNotNull = data.filter((p) => p.fields.age !== undefined);
     const pclassNotNull = data.filter((p) => p.fields.pclass !== undefined);
