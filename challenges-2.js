@@ -70,7 +70,14 @@ const sumAllProperty = (data, property) => {
 // at Cherbourg, 77 emabrked at Queenstown, and 2 are undedfined
 
 const countAllProperty = (data, property) => {
-  return {};
+  return data.reduce((acc, p) => {
+    if (acc[p.fields[property]] === undefined) {
+      acc[p.fields[property]] = 1;
+    } else {
+      acc[p.fields[property]] += 1;
+    }
+    return acc;
+  }, {});
 };
 
 // 6 ------------------------------------------------------------

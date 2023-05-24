@@ -79,7 +79,7 @@ describe("Challenge 2 Titanic", () => {
     expect(index.sumAllProperty(data, "fare")).toBe(sumFares);
   });
 
-  test.skip("Test countAllProperty", () => {
+  test("Test countAllProperty", () => {
     const embarkedCounts = data.reduce((acc, p) => {
       if (acc[p.fields.embarked] === undefined) {
         acc[p.fields.embarked] = 1;
