@@ -65,7 +65,7 @@ describe("Challenge 2 Titanic", () => {
     expect(index.filterNullForProperty(data, "pclass")).toEqual(pclassNotNull);
   });
 
-  test.skip("Test sumAllProperty", () => {
+  test("Test sumAllProperty", () => {
     const sumAges = data.reduce(
       (acc, p) => (p.fields.age !== undefined ? acc + p.fields.age : acc),
       0

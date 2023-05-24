@@ -52,7 +52,11 @@ const filterNullForProperty = (data, property) => {
 // Return the total of all values for a given property. This
 
 const sumAllProperty = (data, property) => {
-  return 0;
+  return data.reduce(
+    (acc, p) =>
+      p.fields[property] !== undefined ? acc + p.fields[property] : acc,
+    0
+  );
 };
 
 // 5 -------------------------------------------------------------
