@@ -34,7 +34,7 @@ const getAllValuesForProperty = (data, property) => {
 // array of all the male passengers [{...}, {...}, {...}, ...]
 
 const filterByProperty = (data, property, value) => {
-  return [];
+  return data.filter((p) => p.fields[property] === value);
 };
 
 // 3 -------------------------------------------------------------

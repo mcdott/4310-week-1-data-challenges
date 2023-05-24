@@ -47,7 +47,7 @@ describe("Challenge 2 Titanic", () => {
     );
   });
 
-  test.skip("Test filterByProperty", () => {
+  test("Test filterByProperty", () => {
     const allMale = data.filter((p) => p.fields.sex === "male");
     const allFemale = data.filter((p) => p.fields.sex === "female");
 
