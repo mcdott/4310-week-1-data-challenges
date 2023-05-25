@@ -164,7 +164,7 @@ describe("Challenge 2 Titanic", () => {
     );
   });
 
-  test.skip("Test normalizeProperty", () => {
+  test("Test normalizeProperty", () => {
     const ages = data
       .filter((p) => p.fields.age !== undefined)
       .map((p) => p.fields.age);
@@ -179,7 +179,7 @@ describe("Challenge 2 Titanic", () => {
     expect(index.normalizeProperty(data, "fare")).toEqual(normalizedFares);
   });
 
-  test.skip("Test getUniqueValues", () => {
+  test("Test getUniqueValues", () => {
     expect(index.getUniqueValues(data, "pclass").sort()).toEqual(
       [3, 2, 1].sort()
     );

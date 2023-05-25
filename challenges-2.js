@@ -110,7 +110,11 @@ const makeHistogram = (data, property, step) => {
 // to divide each value by the maximum value in the array.
 
 const normalizeProperty = (data, property) => {
-  return [];
+  const values = data
+    .filter((p) => p.fields[property] !== undefined)
+    .map((p) => p.fields[property]);
+  const max = Math.max(...values);
+  return values.map((v) => v / max);
 };
 
 // 8 ------------------------------------------------------------
@@ -121,7 +125,7 @@ const normalizeProperty = (data, property) => {
 // would return ['male', 'female']
 
 const getUniqueValues = (data, property) => {
-  return [];
+  return [...new Set(data.map((p) => p.fields[property]))];
 };
 
 // --------------------------------------------------------------
