@@ -89,7 +89,19 @@ const countAllProperty = (data, property) => {
 // ages 0 - 10, 10 - 20, 20 - 30 etc.
 
 const makeHistogram = (data, property, step) => {
-  return [];
+  const histogram = data
+    .filter((p) => p.fields[property] !== undefined)
+    .reduce((acc, p) => {
+      const index = Math.floor(p.fields[property] / step);
+      if (acc[index] === undefined) {
+        acc[index] = 1;
+      } else {
+        acc[index] += 1;
+      }
+      return acc;
+    }, []);
+
+  return Array.from(histogram, (v) => v || 0);
 };
 
 // 7 ------------------------------------------------------------
